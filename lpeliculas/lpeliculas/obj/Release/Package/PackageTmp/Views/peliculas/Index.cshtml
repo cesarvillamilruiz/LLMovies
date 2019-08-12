@@ -1,0 +1,62 @@
+﻿@model lpeliculas.Models.IndexViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+
+<p>
+    @Html.ActionLink("Create New", "Create", null, htmlAttributes: new { @class = "btn btn-info" })
+    @using (Html.BeginForm("Index", "peliculas", FormMethod.Get))
+    {
+    <p>
+        Genre: @Html.DropDownList("movieGendre", "All")
+        Title: @Html.TextBox("actor", null, htmlAttributes: new { @placeholder = "Fitrar por actor" })
+        <input type="submit" value="Filtrar" class="btn btn-success" />
+    </p>
+}
+
+
+
+
+    <table class="table">
+        <tr>
+            <th>
+                Nombre
+            </th>
+            <th>
+                Duracion
+            </th>
+            <th>
+                Genero
+            </th>
+
+        </tr>
+
+        @foreach (var item in Model.peliculas)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Duracion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Genero)
+                </td>
+
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.PeliculaId }, new { @class = "btn btn-warning glyphicon glyphicon-edit" }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.PeliculaId }, new { @class = "btn btn-warning glyphicon glyphicon-details" }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.PeliculaId }, new { @class = "btn btn-warning glyphicon glyphicon-delete" })
+                </td>
+            </tr>
+        }
+
+    </table>
+    @{Html.RenderPartial("_paginador",Model);}
+
+

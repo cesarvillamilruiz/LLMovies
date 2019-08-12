@@ -1,0 +1,45 @@
+﻿@model lpeliculas.Models.BaseModelo
+
+@{
+    var cantidadDePaginas = (int)Math.Ceiling((double)Model.Totalregistros / Model.RegistrosporPagina);
+}
+
+
+@{
+    int inicial = 1;
+    var ratio = 2;
+    var cantidadMaxima = ratio * 2 + 1;
+    int final = (cantidadDePaginas > cantidadMaxima) ? cantidadMaxima : cantidadDePaginas;
+    if (Model.PaginaActual > ratio + 1)
+    {
+        inicial = Model.PaginaActual - ratio;
+        if (cantidadDePaginas > Model.PaginaActual + ratio)
+        {
+            final = Model.PaginaActual + ratio;
+        }
+        else
+        {
+            final = cantidadDePaginas;
+        }
+    }
+}
+
+<ul class="pagination">
+    @{Model.ValorqueryString["page"] = 1; }
+    <li>@Html.ActionLink("Primera", null, Model.ValorqueryString)</li>
+    @for (int i = inicial; i <= final; i++)
+    {
+        Model.ValorqueryString["page"] = i;
+
+        if (i == Model.PaginaActual)
+        {
+            <li class="active">@Html.ActionLink(i.ToString(), null, Model.ValorqueryString)</li>
+        }
+        else
+        {
+            <li>@Html.ActionLink(i.ToString(), null, Model.ValorqueryString)</li>
+        }
+    }
+    @{Model.ValorqueryString["page"] = cantidadDePaginas; }
+    <li>@Html.ActionLink("Ultima", null,Model.ValorqueryString)</li>
+</ul>

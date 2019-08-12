@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="DefaultConnection-Web.config Connection String" description="DefaultConnection Cadena de conexión que usa la aplicación en web.config para obtener acceso a la base de datos." defaultValue="Server=tcp:cleofor12.database.windows.net,1433;Initial Catalog=mvs;Persist Security Info=False;User ID=cleo;Password=Cvr12345;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\cvr\\Documents\\Projects\\lpeliculas\\lpeliculas\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+  </parameter>
+  <parameter name="lpeliculasContext-Web.config Connection String" description="lpeliculasContext Cadena de conexión que usa la aplicación en web.config para obtener acceso a la base de datos." defaultValue="Server=tcp:cleofor12.database.windows.net,1433;Initial Catalog=mvs;Persist Security Info=False;User ID=cleo;Password=Cvr12345;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\cvr\\Documents\\Projects\\lpeliculas\\lpeliculas\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='lpeliculasContext']/@connectionString" />
+  </parameter>
+</parameters>
